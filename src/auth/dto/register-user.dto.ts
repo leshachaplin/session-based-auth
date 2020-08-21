@@ -16,7 +16,7 @@ export class RegisterUserDto {
   readonly username: string;
 
   @IsString()
-  @MinLength(8)
+  @MinLength(7)
   @MaxLength(20)
   @Matches(passwordExp, { message: 'Password too weak' })
   readonly password: string;

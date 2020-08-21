@@ -19,7 +19,7 @@ export class ResetPasswordDto {
 
   @IsString()
   @IsNotEmpty()
-  @MinLength(8)
+  @MinLength(7)
   @MaxLength(20)
   @Matches(passwordExp, { message: 'Password too weak' })
   readonly newPassword: string;
