@@ -12,11 +12,7 @@ import { ResetPasswordDto } from './dto/reset-password.dto copy';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    // uncomment for jwt auth
-    // private readonly jwtService: JwtService,
-    private readonly usersService: UsersService,
-  ) {}
+  constructor(private readonly usersService: UsersService) {}
 
   async validate(email: string, password: string): Promise<User | never> {
     const user = await this.usersService.findOne({ email });
@@ -31,16 +27,6 @@ export class AuthService {
 
     return null;
   }
-
-  // uncomment for jwt auth
-  // async login(user: User): Promise<AccessToken> {
-  //   const { id, ...data } = user.toJSON();
-  //   const payload = { ...data, sub: id };
-
-  //   return {
-  //     accessToken: this.jwtService.sign(payload),
-  //   };
-  // }
 
   async register(registerUserDto: RegisterUserDto): Promise<User> {
     const user = await this.usersService.create(registerUserDto);

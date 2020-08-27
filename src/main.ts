@@ -46,11 +46,12 @@ async function bootstrap() {
          * and you don't need to supply any arguments.
          * https://github.com/NodeRedis/node-redis#rediscreateclient
          */
-        client: redis.createClient(),
+        client: redis.createClient({
+          url: 'redis://localhost:6379',
+        }),
       }),
     }),
   );
-  // also remove passport.initialize() and passport.session() for jwt auth
   app.use(passport.initialize());
   app.use(passport.session());
 

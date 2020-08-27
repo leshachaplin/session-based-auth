@@ -29,13 +29,6 @@ export class AuthController {
     return;
   }
 
-  // replace current login method on this for jwt auth
-  // @UseGuards(LocalAuthGuard)
-  // @Post('login')
-  // login(@Request() req: RequestContext): Promise<AccessToken> {
-  //   return this.authService.login(req.user);
-  // }
-
   @Post('registration')
   registration(@Body() body: RegisterUserDto): Promise<User> {
     return this.authService.register(body);
@@ -53,7 +46,6 @@ export class AuthController {
     return this.authService.resetPassword(body);
   }
 
-  // replace SessionGuard on JwtAuthGuard for jwt auth
   @UseGuards(SessionGuard)
   @Get('profile')
   profile(@Request() req: RequestContext): User {
