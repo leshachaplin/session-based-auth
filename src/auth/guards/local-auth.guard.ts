@@ -9,11 +9,14 @@ import { AuthGuard } from '@nestjs/passport';
 export class LocalAuthGuard<T = any> extends AuthGuard('local') {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const result = (await super.canActivate(context)) as boolean;
-    const request = context.switchToHttp().getRequest();
 
-    await super.logIn(request);
+    if (result) {
+      const request = context.switchToHttp().getRequest();
 
-    return result;
+      await super.logIn(request);
+    }
+
+    return true;
   }
 
   handleRequest<TUser = any>(err: T, user: TUser): TUser | never {

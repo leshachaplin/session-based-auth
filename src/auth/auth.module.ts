@@ -11,7 +11,10 @@ import { SessionSerializer } from './session.serializer';
 @Module({
   controllers: [AuthController],
   imports: [
-    PassportModule.register({ session: true }),
+    PassportModule.register({
+      defaultStrategy: 'local',
+      session: true,
+    }),
     UsersModule,
     SessionSerializer,
   ],

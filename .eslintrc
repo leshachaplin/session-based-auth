@@ -48,10 +48,9 @@
         "next": ["const", "let"]
       }
     ],
-    "import/newline-after-import": ["error", { "count": 1 }],
     "lines-between-class-members": ["error", "always"],
     "arrow-body-style": ["error", "as-needed"],
-    "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 0}]
+    "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 3}]
   },
   "settings": {
     "import/resolver": {

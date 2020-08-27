@@ -12,6 +12,8 @@ import { ApiTags } from '@nestjs/swagger';
 import { RequestContext } from 'src/common/types';
 import { User } from 'src/db/models/user.entity';
 
+import { LoginDto } from '../users/dto/login.dto';
+
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './guards/local-auth.guard';
 import { RegisterUserDto } from './dto/register-user.dto';
@@ -23,9 +25,11 @@ import { SessionGuard } from './guards/session-auth.guard';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @UseGuards(LocalAuthGuard)
+  @UseGuards(new LocalAuthGuard())
   @Post('login')
-  login(): Promise<void> {
+  login(@Body() loginDto: LoginDto): Promise<void> {
+    console.log(loginDto);
+
     return;
   }
 
